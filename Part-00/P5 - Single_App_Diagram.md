@@ -1,34 +1,37 @@
 ```mermaid
 sequenceDiagram
-participant browser
-participant server
+    participant User
+    participant Browser
+    participant Server
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
-    activate server
-    server-->>browser: the HTML file
-    deactivate server
+    User->>Browser: Opens the SPA Notes page
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
-    activate server
-    server-->>browser: the CSS file
-    deactivate server
+    Browser->>Server: GET /exampleapp/spa
+    activate Server
+    Server-->>Browser: HTML page
+    deactivate Server
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
-    activate server
-    server-->>browser: the JavaScript file
-    deactivate server
+    Browser->>Server: GET /exampleapp/main.css
+    activate Server
+    Server-->>Browser: CSS styles
+    deactivate Server
 
-    Note right of browser: The browser starts executing the JavaScript code that fetches the JSON from the server
+    Browser->>Server: GET /exampleapp/spa.js
+    activate Server
+    Server-->>Browser: JavaScript file
+    deactivate Server
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
-    activate server
-    server-->>browser: the JSON file
-    deactivate server
+    Note right of Browser: Browser executes spa.js
 
-    Note right of browser: The browser executes the callback function that renders the notes
+    Browser->>Server: GET /exampleapp/data.json
+    activate Server
+    Server-->>Browser: Notes data as JSON
+    deactivate Server
 
-    browser->>server: GET https://studies.cs.helsinki.fi/favicon.ico
-    activate server
-    server-->>browser: the HTML file
-    deactivate server
+    Note right of Browser: JavaScript updates the page with notes
+
+    Browser->>Server: GET /favicon.ico
+    activate Server
+    Server-->>Browser: Site icon
+    deactivate Server
 ```

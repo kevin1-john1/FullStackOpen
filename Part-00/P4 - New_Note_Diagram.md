@@ -1,39 +1,43 @@
 ```mermaid
 sequenceDiagram
-participant browser
-participant server
+    participant User
+    participant Browser
+    participant Server
 
-    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
-    activate server
-    server-->>browser: URL redirection message
-    deactivate server
+    User->>Browser: Writes a note and clicks Save
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
-    activate server
-    server-->>browser: the HTML file
-    deactivate server
+    Browser->>Server: POST /exampleapp/new_note
+    activate Server
+    Note right of Server: Server saves the new note
+    Server-->>Browser: Redirect to /exampleapp/notes
+    deactivate Server
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
-    activate server
-    server-->>browser: the CSS file
-    deactivate server
+    Browser->>Server: GET /exampleapp/notes
+    activate Server
+    Server-->>Browser: HTML page
+    deactivate Server
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
-    activate server
-    server-->>browser: the JavaScript file
-    deactivate server
+    Browser->>Server: GET /exampleapp/main.css
+    activate Server
+    Server-->>Browser: CSS styles
+    deactivate Server
 
-    Note right of browser: The browser starts executing the JavaScript code that fetches the JSON from the server
+    Browser->>Server: GET /exampleapp/main.js
+    activate Server
+    Server-->>Browser: JavaScript file
+    deactivate Server
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
-    activate server
-    server-->>browser: the JSON file
-    deactivate server
+    Note right of Browser: Browser runs the JavaScript file
 
-    Note right of browser: The browser executes the callback function that renders the notes
+    Browser->>Server: GET /exampleapp/data.json
+    activate Server
+    Server-->>Browser: Notes data as JSON
+    deactivate Server
 
-    browser->>server: GET https://studies.cs.helsinki.fi/favicon.ico
-    activate server
-    server-->>browser: the HTML file
-    deactivate server
+    Note right of Browser: Browser renders the updated notes list
+
+    Browser->>Server: GET /favicon.ico
+    activate Server
+    Server-->>Browser: Site icon
+    deactivate Server
 ```

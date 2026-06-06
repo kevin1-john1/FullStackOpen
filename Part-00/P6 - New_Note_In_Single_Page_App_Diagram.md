@@ -1,12 +1,16 @@
 ```mermaid
 sequenceDiagram
-participant browser
-participant server
+    participant User
+    participant Browser
+    participant Server
 
-    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
-    activate server
-    server-->>browser: Payload that contains the created resource
-    deactivate server
+    User->>Browser: Writes a note and clicks Save
 
-    Note right of browser: The browser executes the callback function that renders the notes
+    Browser->>Server: POST /exampleapp/new_note_spa
+    activate Server
+    Note right of Server: Server stores the new note
+    Server-->>Browser: Created note data (JSON)
+    deactivate Server
+
+    Note right of Browser: Browser updates the notes list without reloading the page
 ```
