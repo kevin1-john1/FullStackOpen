@@ -1,0 +1,25 @@
+{
+  "anecdotes": [
+    {
+      "id": "1",
+      "content": "If it hurts, do it more often",
+      "votes": 3
+    },
+    {
+      "id": "2",
+      "content": "Adding manpower to a late software project makes it later!",
+      "votes": 3
+    },
+    {
+      "id": "4",
+      "content": "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.",
+      "votes": 3
+    },
+    {
+      "content": "Hello",
+      "votes": 0,
+      "id": "OHV_GrI3tk8"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
